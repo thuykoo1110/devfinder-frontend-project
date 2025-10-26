@@ -2,8 +2,10 @@
 import { error } from "console";
 import JustValidate from "just-validate"
 import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 export default function FormRegister() {
+  const router = useRouter();
   useEffect(()=> {
     const validator = new JustValidate("#registerForm");
 
@@ -79,7 +81,13 @@ export default function FormRegister() {
         })
           .then(res => res.json())
           .then(data => {
-            console.log(data)
+            if(data.code=="error"){
+              alert(data.message)
+            }
+
+            if(data.code == "success"){
+              router.push("/user/login") // dẫn sang trang khác không bị reload trang
+            }
           })
       });
     }, []);
