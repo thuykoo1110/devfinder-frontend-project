@@ -43,7 +43,12 @@ export default function FormLogin() {
         })
           .then(res => res.json())
           .then(data => {
-            console.log(data)
+            if(data.code == "error"){
+              alert(data.message)
+            }
+            if(data.code == "success"){
+              router.push("/")
+            }
           })
       });
     }, []);
