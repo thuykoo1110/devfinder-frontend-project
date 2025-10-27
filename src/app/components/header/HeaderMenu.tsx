@@ -61,11 +61,11 @@ export const HeaderMenu = (
       children: [
         {
           name: "Đăng Nhập",
-          link: "#"
+          link: "/company/login"
         },
         {
           name: "Đăng Ký",
-          link: "#"
+          link: "/company/register"
         }
       ]
     }
