@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 export const useAuth = () => {
   const [ isLogin, setIsLogin ] = useState(false);
   const [ infoUser, setInfoUser ] = useState<any>(null);
+  const [ infoCompany, setInfoCompany ] = useState<any>(null);
   const pathName = usePathname();
 
   useEffect(() => {
@@ -18,11 +19,18 @@ export const useAuth = () => {
 
         if(data.code == "success"){
           setIsLogin(true);
-          setInfoUser(data.infoUser);
+          if(data.infoUser){
+            setInfoUser(data.infoUser);
+            setInfoCompany(null);
+          }
+          if(data.infoCompany){
+            setInfoCompany(data.infoCompany);
+            setInfoUser(null);
+          }
         }
       })
   }, [pathName]); // call api gửi cookie để check cookie có hợp lệ ko
   // mỗi lần chuyển trang thì useEffect gọi lại api
 
-  return { isLogin, infoUser };
+  return { isLogin, infoUser, infoCompany };
 }
