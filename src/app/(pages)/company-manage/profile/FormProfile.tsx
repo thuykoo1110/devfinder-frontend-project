@@ -10,7 +10,7 @@ import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import { Toaster, toast } from 'sonner';
 import { useRef } from 'react';
-import { EditorMCE } from "@/app/components/editor/editorMce";
+import { EditorMCE } from "@/app/components/editor/EditorMCE";
 
 // Register the plugin
 registerPlugin(
